@@ -1,0 +1,35 @@
+#include <stdio.h>
+void loop(int z);
+int euclides(int x, int y);
+
+int main(){
+  int A, B, f, n;
+  scanf("%d", &n);
+  loop(n);
+  return 0;
+}
+
+void loop(int z){
+  if(z == 0){
+      return;
+  }
+  else{
+      int x, y, mdc;
+      scanf("%d %d", &x, &y);
+      mdc = euclides(x, y);
+      printf("MDC(%d,%d) = %d\n", x, y, mdc);
+    }
+    loop(z-1);
+}
+
+int euclides(int x, int y){
+     int mdc;
+
+      if(y == 0){
+          return (x);
+      }
+        else{  
+      mdc = euclides(y, x % y);
+      
+          return (mdc);
+    }}
