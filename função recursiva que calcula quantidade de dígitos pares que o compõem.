@@ -1,0 +1,24 @@
+/*Escreva uma função recursiva chamada 
+ContaDigitosPares que receba como entrada um número 
+e retorne a quantidade de dígitos pares que o compõem.
+
+Ex: 234 tem 3 dígitos, mas apenas 2 são pares*/
+#include <stdio.h>
+void ContaDigitosPares(int numero, int digito_par){
+    int digito;
+    digito = numero % 10 ;
+    if( numero <= 0){
+        printf("\n%d\n", digito_par);
+        return;}
+    else if(digito % 2 == 0 ){
+        digito_par++;
+        ContaDigitosPares(numero / 10, digito_par);
+    }
+    else{
+        ContaDigitosPares(numero / 10, digito_par);
+    }}
+int main(){
+    int numero, digito_par = 0;
+    scanf("%d", &numero);
+    ContaDigitosPares(numero, digito_par);
+}
