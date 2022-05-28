@@ -1,0 +1,27 @@
+#include <stdio.h>
+int fatorial(int n){
+   if (n <= 1)
+      return 1;
+   else
+      return (n * fatorial(n-1));
+}
+void loop(int z){
+  if(z == 0){
+      return;
+  }
+  else{
+      int numero, k;
+      scanf("%d", &numero);
+      if(numero == -1){
+      return;}
+      else{
+      k = fatorial(numero);
+      printf("%d\n", k);}
+    }
+    loop(z-1);
+}
+int main()
+{
+	loop(16);
+	return 0;
+}
