@@ -1,15 +1,15 @@
 #include <stdio.h>
-/*Uma empresa de importação de produtos eletrônicos em parceria com o CIn deseja fazer um programa que calcule o valor final do produto e discrimine na nota fiscal quanto o cliente pagou em impostos(Imposto de importação e ICMS), frete e total a pagar. Segue algumas informações que você precisará saber para resolver essa questão:
+/*Uma empresa de importa��o de produtos eletr�nicos em parceria com o CIn deseja fazer um programa que calcule o valor final do produto e discrimine na nota fiscal quanto o cliente pagou em impostos(Imposto de importa��o e ICMS), frete e total a pagar. Segue algumas informa��es que voc� precisar� saber para resolver essa quest�o:
 
 
-    A taxa de importação para eletrônicos é de 60%;
-    O calculo do ICMS é dado pela formula: (Valor Final do produto x Aliquota)
-    O valor final do produto é dado pela soma do (Valor do Produto + Frete + Impostos de Importação) / (1 - Aliquota)
-    A empresa tema cultura de não adicionar o frete no calculo, para valores de US$ 2,500 em diante. Informe isso ao fim da nota.
+    A taxa de importa��o para eletr�nicos � de 60%;
+    O calculo do ICMS � dado pela formula: (Valor Final do produto x Aliquota)
+    O valor final do produto � dado pela soma do (Valor do Produto + Frete + Impostos de Importa��o) / (1 - Aliquota)
+    A empresa tema cultura de n�o adicionar o frete no calculo, para valores de US$ 2,500 em diante. Informe isso ao fim da nota.
 
     Sua entrada deve conter
 
-    -Cotação do Dolar
+    -Cota��o do Dolar
     -Aliquota(%) do ICMS
     -Valor do produto
     -Valor do frete	
@@ -28,14 +28,9 @@ void isencao(double array[]){
             1 aliquota icms
             */
 
-            array[7] = (array[6] + array[10] + array[4]) / (1 - array[1]);
-        printf("array '6' %lf\n", array[6]);
-        printf("array '10' %lf\n", array[10]);
-        printf("array '4' %lf\n", array[4]);
-        printf("array '7' %lf\n", array[7]);
+            array[7] = (array[6] + array[10] + array[4]) / (1 - (array[1] / 100));
        //8 icms calculado 
-            array[8] = array[7] * array[1];
-            printf("icms array8 %lf\n", array[8]);
+            array[8] = array[7] * (array[1] / 100);
     }
 
 
@@ -48,18 +43,13 @@ void isencao(double array[]){
             4 impostos
             1 aliquota icms
             */
-
-            array[7] = (array[6] + array[4]) / (1 - array[1]);
-            printf("array '7' %lf\n", array[7]);
-      //8 icms calculado 
-            array[8] = array[7] * array[1];
-            printf("icms %lf\n", array[7]);
-
+        array[7] = (array[6] + array[4]) / (1 - (array[1] / 100));
+       //8 icms calculado 
+            array[8] = array[7] * (array[1] / 100);
     }
 }
 void taxacao(double array_geral[]){//60%
     array_geral[4] = (array_geral[6] * 60) / 100;
-    printf("taxa60 %lf\n", array_geral[4]);
 }
 void conversao_em_dolaresP(double convertido[]){//produto para reais
 
@@ -85,7 +75,7 @@ void conversao_em_dolaresF(double convertido[]){//fret para reais
 void preencher_array(double entradas[], int i){//preencher de 0 a 3 as entradas
 
     /* preenche array com 
-    -Cotação do Dolar
+    -Cota��o do Dolar
     -Aliquota(%) do ICMS
     -Valor do produto
     -Valor do frete	
@@ -129,9 +119,9 @@ int main(){
     conversao_em_dolaresF(array_geral);
     conversao_em_dolaresP(array_geral);
     array_geral[5] = array_geral[6] + array_geral[10];
-    array_geral[9] = array_geral[4] + array_geral[8];
     taxacao(array_geral);
-    isencao(array_geral); printf("%.2lf\n%.2lf\n%.2lf\n%.2lf\n%.2lf\n%.2lf\n%.2lf\n%.2lf\n", array_geral[0], array_geral[6], array_geral[10], array_geral[5], array_geral[4], array_geral[8], array_geral[9], array_geral[9] + array_geral[5]);
+    isencao(array_geral); 
+    array_geral[9] = array_geral[4] + array_geral[8]; printf("%.2lf\n%.2lf\n%.2lf\n%.2lf\n%.2lf\n%.2lf\n%.2lf\n%.2lf\n", array_geral[0], array_geral[6], array_geral[10], array_geral[5], array_geral[4], array_geral[8], array_geral[9], array_geral[9] + array_geral[5]);
   if(array_geral[6] < 2500){
         printf("Impostos calculados com o frete");
   }
